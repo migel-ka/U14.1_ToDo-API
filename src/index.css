@@ -3,3 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-color:black;
+  color:antiquewhite;
+  margin: 20px 25px 20px 25px;
+}

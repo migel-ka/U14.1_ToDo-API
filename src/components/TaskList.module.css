@@ -1,0 +1,8 @@
+.taskListMain {
+    border: 1px solid whitesmoke;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(240, 255, 255, 0.5);
+    margin-right: 20px;
+    max-width: 60%;
+}
