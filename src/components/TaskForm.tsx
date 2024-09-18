@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Task } from '..//types/Tasks';
+import style from './TaskForm.module.css';
 
 interface TaskFormProps {
     onAddTask: (task: Task) => void;
@@ -7,18 +8,18 @@ interface TaskFormProps {
 
 const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
     const [newTaskName, setNewTaskName] = useState<string>('');
-    const [newTaskStatus, setNewTaskStatus] = useState<string>('');
+    const [newTaskStatus, setNewTaskStatus] = useState<boolean>(false);
 
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNewTaskName(event.target.value);
     };
 
     const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTaskStatus(event.target.value);
+        setNewTaskStatus(event.target.checked);
     };
 
     const handleSubmit = () => {
-        if (newTaskName.trim() === '' || newTaskStatus.trim() === '') {
+        if (newTaskName.trim() === '') {
             alert('Пожалуйста, заполните все поля.');
             return;
         }
@@ -31,25 +32,27 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
 
         onAddTask(newTask);
         setNewTaskName('');
-        setNewTaskStatus('');
+        setNewTaskStatus(false);;
     };
 
     return (
-        <div>
+        <div className={style.TaskForm}>
             <h2>Добавить новую задачу</h2>
+            <label htmlFor="">Что нужно сделать</label>
             <input
                 type="text"
                 value={newTaskName}
                 onChange={handleNameChange}
-                placeholder="Название задачи"
+                placeholder="Например: Подготовить проектную документацию."
             />
+            <label htmlFor="">Статус задачи</label>
             <input
-                type="text"
-                value={newTaskStatus}
+                type="checkbox"
+                checked={newTaskStatus}
                 onChange={handleStatusChange}
-                placeholder="Статус задачи"
             />
-            <button onClick={handleSubmit}>Добавить</button>
+            <span>{newTaskStatus ? 'Завершено' : 'Не завершено'}</span> {/* Для отображения статуса */}
+            <button className={style.button} onClick={handleSubmit}>Добавить</button>
         </div>
     );
 };
