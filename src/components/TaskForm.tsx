@@ -8,11 +8,16 @@ interface TaskFormProps {
 
 const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
     const [newTaskName, setNewTaskName] = useState<string>('');
+    const [newTaskInfo, setNewTaskInfo] = useState<string>('');
     const [newTaskStatus, setNewTaskStatus] = useState<boolean>(false);
 
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNewTaskName(event.target.value);
     };
+
+    const handleInfoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setNewTaskInfo(event.target.value);
+    }; 
 
     const handleSubmit = () => {
         if (newTaskName.trim() === '') {
@@ -23,11 +28,13 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
         const newTask: Task = {
             id: Date.now(),
             name_task: newTaskName,
+            info_task: newTaskInfo,
             status_task: newTaskStatus
         };
 
         onAddTask(newTask);
         setNewTaskName('');
+        setNewTaskInfo('');
         setNewTaskStatus(false);;
     };
 
@@ -40,6 +47,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
                 value={newTaskName}
                 onChange={handleNameChange}
                 placeholder="Например: Подготовить проектную документацию."
+            />
+             <input
+                type="text"
+                value={newTaskInfo}
+                onChange={handleInfoChange}
+                placeholder="Например: по ферстке"
             />
             <button className={style.button} onClick={handleSubmit}>Добавить</button>
         </div>

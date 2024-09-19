@@ -15,15 +15,18 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onUpdateTask })
   return (
     <li 
     key={task.id}
-    className = {task.status_task ? style.complited : style.pending}
+    className = {task.status_task ? style.pending : style.complited} 
     >
-      <strong>{task.name_task}</strong>
+      <div className={style.NameInfoTask}>
+        <strong>{task.name_task}</strong>
+        <i>{task.info_task}</i>
+      </div>
       <div className={style.button_input}>
       <input 
       type="checkbox" 
       checked={task.status_task}
       onChange={handleCheckboxChange} />
-      <button className={style.button} onClick={() => onDeleteTask(task.id)}> &#x2715;</button>
+      <button className={style.button} onClick={() => onDeleteTask(task.id)}> &#x2717;</button>
       </div>
     </li>
   );

@@ -66,13 +66,33 @@ const App: React.FC = ({}) => {
           
     };
 
-    const handleUpdateTask = (id: number, status: boolean) => {
-      // Логика для обновления состояния задачи в родительском компоненте
-      setTasks(prevTasks => 
-        prevTasks.map(task => 
-          task.id === id ? { ...task, status_task: status } : task
-        )
-      );
+    const handleUpdateTask = async (id: number, status: boolean) => {
+      try {
+        // Обновляем состояние локально
+        setTasks(prevTasks => 
+          prevTasks.map(task => 
+            task.id === id ? { ...task, status_task: status } : task
+          )
+        );
+    
+        // Отправляем обновление на сервер
+        const response = await fetch (`https://61ed4fee31664a49.mokky.dev/task/${id}`, {
+          method: 'PATCH', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ status_task: status }),
+        });
+    
+        if (!response.ok) {
+          throw new Error('Ошибка при обновлении задачи на сервере');
+        }
+    
+        const updatedTask = await response.json();
+        console.log('Задача обновлена:', updatedTask);
+      } catch (error) {
+        console.error('Ошибка:', error);
+      }
     };
 
     function getDate() {

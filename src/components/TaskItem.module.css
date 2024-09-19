@@ -23,3 +23,12 @@ li {
     width: 32px;
     font-weight: 900;
   }
+  .NameInfoTask{
+    display: flex;
+    flex-direction: column;
+  }
+
+  i {
+    font-size: 14px;
+    font-weight: 300;
+  }
