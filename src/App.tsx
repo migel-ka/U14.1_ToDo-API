@@ -66,12 +66,28 @@ const App: React.FC = ({}) => {
           
     };
 
+    const handleUpdateTask = (id: number, status: boolean) => {
+      // Логика для обновления состояния задачи в родительском компоненте
+      setTasks(prevTasks => 
+        prevTasks.map(task => 
+          task.id === id ? { ...task, status_task: status } : task
+        )
+      );
+    };
+
+    function getDate() {
+      const today = new Date();
+      const month = today.getMonth() + 1;
+      const year = today.getFullYear();
+      return `${today.getDate() < 10 ? '0' + today.getDate() : today.getDate()}.${month < 10 ? '0' + month : month}.${year} года`;
+    }
+
 
   return (
     <main>
-      <h1>Список задач</h1>
+      <h1>СПИСОК ЗАДАЧ на {getDate()}</h1>
       <div className="toDo_main">
-        <TaskList tasks={tasks} onDeleteTask={handleDelete}/>
+        <TaskList tasks={tasks} onDeleteTask={handleDelete} onUpdateTask={handleUpdateTask}/>
         <TaskForm onAddTask={handleAddTask} />
       </div>
     </main>

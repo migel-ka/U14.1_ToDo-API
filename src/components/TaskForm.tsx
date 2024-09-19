@@ -14,10 +14,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
         setNewTaskName(event.target.value);
     };
 
-    const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTaskStatus(event.target.checked);
-    };
-
     const handleSubmit = () => {
         if (newTaskName.trim() === '') {
             alert('Пожалуйста, заполните все поля.');
@@ -25,7 +21,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
         }
 
         const newTask: Task = {
-            id: 1, // Здесь можно заменить на логику для определения уникального ID
+            id: Date.now(),
             name_task: newTaskName,
             status_task: newTaskStatus
         };
@@ -45,13 +41,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
                 onChange={handleNameChange}
                 placeholder="Например: Подготовить проектную документацию."
             />
-            <label htmlFor="">Статус задачи</label>
-            <input
-                type="checkbox"
-                checked={newTaskStatus}
-                onChange={handleStatusChange}
-            />
-            <span>{newTaskStatus ? 'Завершено' : 'Не завершено'}</span> {/* Для отображения статуса */}
             <button className={style.button} onClick={handleSubmit}>Добавить</button>
         </div>
     );

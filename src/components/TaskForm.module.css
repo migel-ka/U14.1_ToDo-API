@@ -3,7 +3,7 @@
     border-radius: 15px;
     padding: 10px;
     background-color: rgb(240, 255, 255, 0.5);
-    max-width: 40%;
+    min-width: 35%;
     display: flex;
     flex-direction: column
 }

@@ -1,0 +1,25 @@
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.completed {
+    background-color: green;
+    text-decoration: line-through;
+  }
+  
+.pending {
+    background-color: green;
+    text-decoration: line-through;
+  }
+  .button_input{
+    display: flex;
+  }
+  .button{
+    border-radius: 100%;
+    border: 0px;
+    margin: 5px;
+    height: 32px;
+    width: 32px;
+    font-weight: 900;
+  }
