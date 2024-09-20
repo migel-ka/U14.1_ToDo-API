@@ -15,3 +15,11 @@
     margin: 5px 0 10px 0;
     border-bottom: 1px solid whitesmoke;
 }
+
+@media (max-width: 800px) {
+    .taskListMain {
+        margin-right: 0;
+        min-width: 100%;
+        margin-bottom: 10px;
+    }
+}

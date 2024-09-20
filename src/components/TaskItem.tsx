@@ -23,10 +23,15 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onUpdateTask })
       </div>
       <div className={style.button_input}>
       <input 
+      className={style.checkbox}
       type="checkbox" 
       checked={task.status_task}
+      title='Отметить задачу выполненой'
       onChange={handleCheckboxChange} />
-      <button className={style.button} onClick={() => onDeleteTask(task.id)}> &#x2717;</button>
+      <button 
+      className={style.button} 
+      title='Удалить задачу'
+      onClick={() => onDeleteTask(task.id)}> &#x2717;</button>
       </div>
     </li>
   );

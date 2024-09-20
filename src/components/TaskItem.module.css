@@ -4,25 +4,36 @@ li {
     align-items: center;
 }
 .completed {
-    background-color: green;
+    background-color: rgb(0, 128, 0);
     text-decoration: line-through;
   }
   
 .pending {
-    background-color: green;
+    background-color: rgb(0, 128, 0);
+    opacity: 0.6;
     text-decoration: line-through;
+    border-radius: 5px;
   }
   .button_input{
     display: flex;
   }
   .button{
     border-radius: 100%;
-    border: 0px;
+    border: 1px gray;
     margin: 5px;
     height: 32px;
     width: 32px;
     font-weight: 900;
   }
+  .button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease;
+}
+.button:active{
+  background-color: black;
+  color: whitesmoke;
+  transition: 0.5s ease;
+}
   .NameInfoTask{
     display: flex;
     flex-direction: column;
@@ -31,4 +42,12 @@ li {
   i {
     font-size: 14px;
     font-weight: 300;
+  }
+  .button_input {
+    width: 20%;
+    justify-content: space-around
+  }
+  label {
+    margin-bottom: 5px;
+    margin-top: 10px;
   }

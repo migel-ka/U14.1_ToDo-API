@@ -10,5 +10,20 @@
 
 .button {
     width: 100%;
+    padding: 10px;
+    border: 1px gray;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease;
+}
+
+.button:active{
+  background-color: black;
+  color: whitesmoke;
+  transition: 0.5s ease;
 }
 

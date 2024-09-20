@@ -41,20 +41,21 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
     return (
         <div className={style.TaskForm}>
             <h2>Добавить новую задачу</h2>
-            <label htmlFor="">Что нужно сделать</label>
+            <label htmlFor="">Что запланируем на сегодня?</label>
             <input
                 type="text"
                 value={newTaskName}
                 onChange={handleNameChange}
                 placeholder="Например: Подготовить проектную документацию."
             />
+            <label htmlFor="">А если конкретнее?</label>
              <input
                 type="text"
                 value={newTaskInfo}
                 onChange={handleInfoChange}
                 placeholder="Например: по ферстке"
             />
-            <button className={style.button} onClick={handleSubmit}>Добавить</button>
+            <button className={style.button} onClick={handleSubmit}>Добавить задачу</button>
         </div>
     );
 };
